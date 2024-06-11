@@ -7,7 +7,7 @@ Route::get('/', [ContactsController::class, 'index']);
 
 Route::get('/add', [ContactsController::class, 'addContact']);
 Route::post('/add', [ContactsController::class, 'addContact']);
-Route::delete('/delete/{id}', [ContactsController::class, 'deleteContact']);
+Route::post('/delete/{id}', [ContactsController::class, 'deleteContact']);
 
 
 

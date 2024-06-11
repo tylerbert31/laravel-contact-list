@@ -7,7 +7,7 @@
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li><a href="/">Homepage</a></li>
         <li><a href="/add">New Contact</a></li>
-        <li><a href="/">About</a></li>
+        <li><a href="/test">Create Test Contact</a></li>
       </ul>
     </div>
   </div>

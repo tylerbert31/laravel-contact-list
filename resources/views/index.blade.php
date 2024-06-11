@@ -22,12 +22,8 @@
             <td>{{ $user->email }}</td>
             <td>{{ $user->address }}</td>
             <td>{{ $user->birthday }}</td>
-            <td>
-                <form action="/delete/{{ $user->id }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn btn-ghost">🗑️</button>
-                </form>
+            <td class="flex">
+                <button type="submit" data-name="{{ $user->fname }}" data-id="{{ $user->id }}" class="btn btn-ghost delete_btn">🗑️</button>
             </td>
         </tr>
         @endforeach
@@ -41,4 +37,23 @@
     </table>
     </div>
 </div>
+<script>
+    $('.delete_btn').click(function() {
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        Swal.fire({
+            title: `Do you want to remove ${name}?`,
+            showDenyButton: true,
+            showCancelButton: true,
+            denyButtonText: `Delete`,
+            showConfirmButton: false,
+        }).then(async (result) => {
+            if (result.isDenied) {
+                await axios.post(`/delete/${id}`).then(() => {
+                    location.reload();
+                });
+            }
+        });
+    });
+</script>
 @endsection

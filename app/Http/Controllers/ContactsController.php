@@ -21,7 +21,6 @@ class ContactsController extends Controller
 
     public function addContact(){
         if(request()->isMethod('post')) {
-            $this->log("req");
             $data = request()->all();
             unset($data['_token']);
 
@@ -63,7 +62,7 @@ class ContactsController extends Controller
             'birthday' => '1990-09-09',
             'address' => '123 Main St, City, State, 12345',
         ]);
-        return "Exected";
+        return redirect('/');
     }
 
     private function log($msg = '', $method = '', $line = 0){
