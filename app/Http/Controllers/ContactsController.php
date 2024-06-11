@@ -26,7 +26,7 @@ class ContactsController extends Controller
             unset($data['_token']);
 
             $keys = Contact::keys();
-            $valid = false;
+            $valid = true;
 
             foreach($keys as $key){
                 if(!isset($data[$key]) || empty($data[$key])){
@@ -49,7 +49,7 @@ class ContactsController extends Controller
     public function deleteContact($id){
         if($id){
             Contact::where('id', $id)->delete();
-            $this->log("Deleted: $id");
+            $this->log("Deleted: $id", __METHOD__);
             return redirect('/');
         }
     }
@@ -66,7 +66,8 @@ class ContactsController extends Controller
         return "Exected";
     }
 
-    private function log($msg){
-        Log::info($msg);
+    private function log($msg = '', $method = '', $line = 0){
+        $print = $method . ' (' . $line . ') ==> ' . $msg;
+        Log::info($print);
     }
 }

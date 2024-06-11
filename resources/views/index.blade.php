@@ -17,7 +17,7 @@
         <tbody>
         @foreach($users as $user)
         <tr>
-            <th>{{ $user->fullName() }}x</th>
+            <th>{{ $user->fullName() }}</th>
             <td>{{ $user->phone }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->address }}</td>
